@@ -6,21 +6,21 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/loguru-mypy-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/loguru-mypy-{{ version }}.tar.gz
   sha256: 1f1767d7737f1825295ce147f7e751f91837f5759b3c2f41801adc65691aeed4
 
 build:
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-  number: 0
+  number: 1
 
 requirements:
   host:
-    - python >=3.6
+    - python {{ python_min }}
     - setupmeta
     - pip
   run:
-    - python >=3.6
+    - python >={{ python_min }}
     - typing-extensions
 
 test:
@@ -31,6 +31,7 @@ test:
   requires:
     - pip
     - mypy
+    - python {{ python_min }}
 
 about:
   home: https://github.com/kornicameister/loguru-mypy
