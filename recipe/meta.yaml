@@ -19,6 +19,7 @@ requirements:
     - python {{ python_min }}
     - setupmeta
     - pip
+    - setuptools
   run:
     - python >={{ python_min }}
     - typing-extensions
